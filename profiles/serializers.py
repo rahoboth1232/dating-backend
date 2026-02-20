@@ -1,10 +1,15 @@
 from rest_framework import serializers
+from rest_framework import serializers
 from .models import Profile
-class ProfileSerializer(serializers.ModelSerializer):
-    username = serializers.CharField(source='user.username', read_only=True)
-    email = serializers.EmailField(source='user.email', read_only=True)
-    photo = serializers.ImageField(required=False)
 
+class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = Profile
-        fields = ['username', 'email', 'bio', 'age', 'gender', 'photo', 'preference_gender']
+        fields = [
+            'bio',
+            'age',
+            'gender',
+            'interested_in',
+            'interests',
+            'photo'
+        ]
