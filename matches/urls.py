@@ -1,7 +1,16 @@
 from django.urls import path
-from .views import SwipeView, MatchListView
+from .views import (
+    SuggestionView,
+    SwipeView,
+    MatchListView,
+    SendMessageView,
+    MessageListView
+)
 
 urlpatterns = [
-    path('swipe/', SwipeView.as_view(), name='swipe'),
-    path('matches/', MatchListView.as_view(), name='matches'),
+    path("suggestions/", SuggestionView.as_view()),
+    path("swipe/", SwipeView.as_view()),
+    path("matches/", MatchListView.as_view()),
+    path("chat/<int:match_id>/send/", SendMessageView.as_view()),
+    path("chat/<int:match_id>/", MessageListView.as_view()),
 ]
